@@ -35,5 +35,7 @@ Adafruit_STMPE610.h (pentru controlul tactil)  și Adafruit_GFX_Library (pentru 
 # 2. Surse de informare
 
 Proiectul este prezentat la adresa https://learn.adafruit.com/arduin-o-phone-arduino-powered-diy-cellphone/overview
+
 Modulul GSM este descris la următoarea adresă: https://learn.adafruit.com/adafruit-fona-800-shield?view=all
+
 Detalii despre shield-ul TFT touchscreen se găsesc la următoarea adresă: https://learn.adafruit.com/2-8-tft-touch-shield?view=all
