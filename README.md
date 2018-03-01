@@ -6,7 +6,7 @@ Proiect final
 # 1. Prezentarea conceptului
 
 Arduin-o-Phone asigură servicii GSM de bază folosind tehnologia Arduino. Dispozitivul acoperă strictul necesar de funcționalități pe care orice telefon mobil modern le pune la dispoziție clienților: apeluri vocale și mesagerie text. 
-Arduin-o-Phone este proiectat să servească unor cerințe minime, dar la o calitate comparabilă cu cea oferită de dezvoltatorii de top. Programul software permite interacțiunea utilizatorului cu modulul GSM incorporat prin intermediul unei interfețe grafice simpliste, ușor de înțeles. Telefonul poate fi folosit cu o cartelă SIM în orice rețea 2G.
+Arduin-o-Phone este proiectat să servească unor cerințe minimale, folosind puține resurse. Programul software permite interacțiunea utilizatorului cu modulul GSM incorporat prin intermediul unei interfețe grafice simpliste, ușor de înțeles. Telefonul poate fi folosit cu o cartelă SIM în orice rețea 2G.
 
 # 2. Modul de utilizare
 
