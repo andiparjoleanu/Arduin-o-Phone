@@ -26,12 +26,12 @@ https://docs.google.com/spreadsheets/d/1KIE2vp-zYCx8KGOTebWFyfd9SiTvjEds6vEb6sLg
 
 # 4. Componenta hardware a dispozitivului
 
-În link-ul de mai sus, sunt specificate piesele cu care a fost construit Arduino-o-Phone. Evident, dispozitivul este asamblat pe o placă de dezvoltare Arduino. Deasupra plăcii, se așază modulul GSM Adafruit, care este creat pe baza configurației pinilor de pe placa Arduino Uno. Modulul poate fi folosit direct cu Arduino Uno, dar poate fi adaptat altor modele de plăci de dezvoltare Arduino. Se introduce o cartelă 2G în slot-ul SIM, apoi se lipesc pe modul un difuzor și un microfon, componente care trebuie să intervină în desfășurarea apelurilor vocale. Pinii de pe shield-ul Adafruit TFT 2.8" au aceeași configurație ca pinii de pe Arduino Uno, ca urmare, shield-ul poate fi așezat deasupra modulului GSM, fără a folosi plăci intermediare. Modulul GSM funcționează doar prin conectarea bateriei externe de Litiu.
+În link-ul de mai sus, sunt specificate piesele cu care a fost construit Arduino-o-Phone. Evident, dispozitivul este asamblat pe o placă de dezvoltare Arduino. Deasupra plăcii, se așază modulul GSM Adafruit, care este creat pe baza configurației pinilor de pe placa Arduino Uno. Modulul poate fi folosit direct cu Arduino Uno, dar poate fi adaptat altor modele de plăci de dezvoltare Arduino. Se introduce o cartelă 2G în slot-ul SIM, apoi se lipesc pe modul un difuzor și un microfon, componente care vor interveni în desfășurarea apelurilor vocale. Pinii de pe shield-ul Adafruit TFT 2.8" au aceeași configurație ca pinii de pe Arduino Uno, ca urmare, shield-ul poate fi așezat deasupra modulului GSM, fără a folosi plăci intermediare. Modulul GSM funcționează doar prin conectarea bateriei externe de Litiu.
 
 # 5. Componenta software a dispozitivului
 
 Programul care asigură interfața grafică a dispozitivului a fost scris în limbajul C++, în mediul de dezvoltare Arduino. Pentru configurarea ecranului LCD am folosit bibliotecile: Adafruit_ILI9341.h (care desenează primitive geometrice), 
-Adafruit_STMPE610.h (pentru controlul tactil)  și Adafruit_GFX_Library (pentru reprezentarea unor elemente grafice complexe). Serviciile GSM sunt accesibile prin modulul GSM Adafruit Fona și biblioteca asociată Adafruit_FONA.h. Biblioteca conține metode pentru confguarea difuzorului și microfonului atașate
+Adafruit_STMPE610.h (pentru controlul tactil)  și Adafruit_GFX_Library (pentru reprezentarea unor elemente grafice complexe). Serviciile GSM sunt accesibile prin modulul GSM Adafruit Fona și biblioteca asociată Adafruit_FONA.h. Această bibliotecă cuprinde metode pentru confguarea difuzorului și microfonului atașate.
 
 # 7. Descriere
 
