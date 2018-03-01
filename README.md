@@ -2,7 +2,10 @@
 Introducere în robotică cu Arduino
 
 Proiect final
+ 
+# 1. Prezentarea conceptului
 
+Arduin-o-Phone asigură servicii GSM de bază folosind tehnologia Arduino. Dispozitivul acoperă strictul necesar de funcționalități pe care orice telefon mobil modern le pune la dispoziție clienților: apeluri vocale și mesagerie text. Arduin-o-Phone este proiectat să servească unor cerințe minime, dar la o calitate comparabilă cu cea oferită de dezvoltatorii de top. Programul software permite interacțiunea utilizatorului cu modulul GSM incorporat prin intermediul unei interfețe grafice simpliste, ușor de înțeles. Telefonul poate fi folosit cu o cartelă SIM în orice rețea 2G.
 
 # 2. Bill of Materials (BOM)
 
@@ -16,12 +19,3 @@ Adafruit_STMPE610.h (pentru controlul tactil)  și Adafruit_GFX_Library (pentru 
 
 # 2. Surse de informare
 
-Link-urile de mai jos trimit către pagini în care este prezentat sumar proiectul sau în care este descrisă doar configurarea modulului GSM SIM800L. Nu am găsit un tutorial complet despre proiect.
-
-https://www.youtube.com/watch?v=7F-l8iI8TT8
-
-https://exploreembedded.com/wiki/GSM_SIM800L_Sheild_with_Arduino
-
-https://www.optimusdigital.ro/ro/gsm-i-gprs/270-modul-gsm-sim800lantena-pcb.html
-
-https://www.arduino.cc/en/Reference/SoftwareSerial
