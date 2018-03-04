@@ -9,8 +9,8 @@
 #include <Adafruit_FONA.h>
 
 #define TS_MINX 150
-#define TS_MINY 130                                                                                  // valorile pentru interpretarea sirului de puncte atinse in
-#define TS_MAXX 3800                                                                                 // functie de coordonatele ecranului 
+#define TS_MINY 130                                                                                  // valori folosite pentru interpretarea sirului de puncte atinse in
+#define TS_MAXX 3800                                                                                 // pe ecran in functie de dimensiunile ecranului 
 #define TS_MAXY 4000
 
 #define BROWN 0xB222                                                                                 // adresa corespunzatoare culorii maro
@@ -27,7 +27,7 @@ extern const unsigned char home[];
 SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);                                            // crearea unui obiect pentru comunicare seriala
 SoftwareSerial * fonaSerial = & fonaSS;
 
-Adafruit_FONA fona = Adafruit_FONA(FONA_RS);                                                         // creearea unui obiect pentru accesarea serviciilor de telefonie
+Adafruit_FONA fona = Adafruit_FONA(FONA_RS);                                                         // crearea unui obiect pentru accesarea serviciilor de telefonie
 
 #define TFT_CS 10
 #define TFT_DC 9
@@ -38,7 +38,7 @@ Adafruit_GFX_Button button[15];                                                 
 char number[14], text[30];                                                                           // siruri pentru stocarea unui numar de telefon sau a unui mesaj text
 int8_t SMSs;                                                                                         // SMSs retine numarul de SMS-uri salvate pe cartela
 bool state, upperCase, answer;                                                                       // state este o variabila auxiliara folosita:
-                                                                                                     // - in pagina Mesaje, pentru identificarea spatiului alb pe care utilizatorul introduce text
+                                                                                                     // - in pagina Mesaje, pentru identificarea campului in care utilizatorul introduce text
                                                                                                      // - in pagina Log, pentru notificarea citirii unui mesaj salvat pe cartela
                                                                                                      // upperCase - indica folosirea optiunii "Caps Lock" pentru tastele caracter
                                                                                                      // answer - indica faptul ca utilizatorul a raspuns la un apel de intrare
@@ -66,7 +66,7 @@ void showPage0(TS_Point p)                                                      
         case ILI9341_MAGENTA : col = ILI9341_PURPLE; break;
         case ILI9341_BLUE : col = ILI9341_WHITE; break;
         case ILI9341_BLACK : col = ILI9341_GREENYELLOW; break;
-     }
+     
      
      if(loops[0] == 0)                                                                                         // daca pana la loop-ul curent aceasta functie nu a mai fost apelata,
          {
@@ -132,7 +132,7 @@ int showPage1(TS_Point p)                                                       
     if(loops[1] == 0)                                                                                          // daca aplicatia tocmai a fost accesata
       {                                                                                                        // (daca procedura nu a fost apelata in loop-ul anterior),
         tft.fillRect(15, 20, 210, 50, ILI9341_WHITE);                                                          // se deseneaza campurile pentru editare de text si se creeaza
-        tft.drawRect(15, 20, 210, 50, ILI9341_RED);                                                            // butoanele numerice si butoanele speciale care vor fi
+        tft.drawRect(15, 20, 210, 50, ILI9341_RED);                                                            // butoanele numerice si butoanele speciale care vor 
         for(unsigned int row = 0; row < 5; row ++)                                                             // aparea pe ecran pana la parasirea aplicatiei.
             for(unsigned int col = 0; col < 3; col ++)
             {
@@ -175,9 +175,9 @@ int showPage1(TS_Point p)                                                       
         p.x = p.y = p.z = - 1;
         while(ts.bufferSize())                                                                              // se elibereaza buffer-ul cu puncte in care a fost atins ecranul
             ts.getPoint();                                                                                  // pentru evitarea reapelarii procedurii pentru puncte duplicate,
-                                                                                                            // care se pot crea, de exemplu, cand ecranul este apasat mai puternic
+                                                                                                            // care se pot crea, de exemplu, cand ecranul este apasat mai puternic.
                                                                                               
-        loops[1] = 1;                                                                                       // se incheie o secventa a unor instructiuni care se apeleaza
+        loops[1] = 1;                                                                                       // se incheie o secventa a unor instructiuni care se executa
       }                                                                                                     // doar la primul apel
     
        for(int b = 0; b < 15; b ++)
@@ -237,7 +237,7 @@ int showPage1(TS_Point p)                                                       
         }
         
      if(p.x > 105 && p.x < 138 && p.y > 283 && p.y < 316)                                                 // daca punctul trimis ca parametru are coordonatele
-                     {                                                                                    // intr-o pozitie pe care se afla desenat simbolul ">>",
+                     {                                                                                    // pe o pozitie pe care se afla desenat simbolul ">>",
                         loops[1] = 0;                                                                     // se reinitializeaza dimensiunile buffer-ului number
                         number[0] = '\0';                                                                 // si se revine la meniul principal
                         nrLength = 0;
@@ -966,7 +966,7 @@ inline bool showPage10 (TS_Point p)                                             
                    else {                                                                                                       // daca utilizatorul apasa butonul Answer,
                            fona.setAudio(FONA_EXTAUDIO);                                                                        // se stabileste conexiunea intre dispozitivul
                            fona.pickUp();                                                                                       // utilizatorului si dispozitivul expeditorului,
-                           tft.fillRect(0, 230, 240, 100, ILI9341_BLACK);                                                       // se afiseaza un mesaj sugestiv evenimentului si 
+                           tft.fillRect(0, 230, 240, 100, ILI9341_BLACK);                                                       // se afiseaza un mesaj sugestiv evenimentului si se
                            tft.fillRect(40, 100, 200, 10, ILI9341_BLACK);                                                       // initializeaza un buton pentru incheierea apelului
                            tft.setCursor(40, 100);
                            tft.setTextSize(1);
