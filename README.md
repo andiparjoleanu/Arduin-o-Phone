@@ -31,7 +31,7 @@ https://docs.google.com/spreadsheets/d/1KIE2vp-zYCx8KGOTebWFyfd9SiTvjEds6vEb6sLg
 # 5. Componenta software a dispozitivului
 
 Programul care asigură interfața grafică a dispozitivului a fost scris în limbajul C++, în mediul de dezvoltare Arduino. Pentru configurarea ecranului LCD am folosit bibliotecile: Adafruit_ILI9341.h (care desenează primitive geometrice), 
-Adafruit_STMPE610.h (pentru controlul tactil)  și Adafruit_GFX_Library (pentru reprezentarea unor elemente grafice complexe). Serviciile GSM sunt accesibile prin modulul GSM Adafruit Fona și biblioteca asociată Adafruit_FONA.h. Această bibliotecă cuprinde metode pentru confguarea difuzorului și microfonului atașate.
+Adafruit_STMPE610.h (pentru controlul tactil)  și Adafruit_GFX_Library (pentru reprezentarea unor elemente grafice complexe). Serviciile GSM sunt accesibile prin modulul GSM Adafruit Fona și biblioteca asociată Adafruit_FONA.h. Această bibliotecă cuprinde totodată metode pentru configuarea difuzorului și microfonului atașate.
 
 # 7. Descriere
 
