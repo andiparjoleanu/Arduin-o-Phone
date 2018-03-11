@@ -36,10 +36,14 @@ Adafruit_STMPE610.h (pentru controlul tactil)  și Adafruit_GFX_Library (pentru 
 # 7. Descriere
 
 Fișiere video:
+
 Arduin-O-Phone - prezentare generală : https://drive.google.com/open?id=1PnfTgB1TPuTpnf1rcQdHcwsLq7KQkcRH
+
 Arduin-O-Phone - apeluri de ieșire : https://drive.google.com/open?id=16rVzmig-amjmHMmQ3q9gyKqRD4l-pXlf
 
+
 Fișier text: 
+
 Descrierea proiectului : https://docs.google.com/document/d/1bdReWGOHXGmcujtuef5UpYQfj9KQrBGlnb3PVdv1Uck/edit?usp=sharing
 
 # 6. Surse de informare
