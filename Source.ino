@@ -19,7 +19,8 @@
 Adafruit_STMPE610 ts = Adafruit_STMPE610(STMPE_CS);                                                  // crearea unui obiect pentru utilizarea ecranului prin atingere
 
 #define FONA_RX 2
-#define FONA_TX 3#define FONA_RS 4
+#define FONA_TX 3
+#define FONA_RS 4
 
 extern const unsigned char home[];
 
