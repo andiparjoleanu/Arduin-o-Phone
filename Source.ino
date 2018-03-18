@@ -54,7 +54,7 @@ short int nrLength, txtLength, pgNumberSMS, changePage = 1, pgNumber, loops[10],
 
 
 
-void showPage0(TS_Point p)                                                                                                // meniul principal
+void showPage0(TS_Point p)                                                                                                 // meniul principal
 {
 
 	int col;
@@ -67,7 +67,7 @@ void showPage0(TS_Point p)                                                      
 		case ILI9341_BLACK: col = ILI9341_GREENYELLOW; break;
 	}
 
-	if (loops[0] == 0)                                                                                                  // daca pana la loop-ul curent aceasta functie nu a mai fost apelata,
+	if (loops[0] == 0)                                                                                                 // daca pana la loop-ul curent aceasta functie nu a mai fost apelata,
 	{
 		tft.fillScreen(bgColor);
 		tft.setTextColor(col);
@@ -84,17 +84,17 @@ void showPage0(TS_Point p)                                                      
 				case 3: aux[0] = '\0'; strcat(aux, "Settings"); break;
 			}
 
-			button[i].initButton(&tft, 120, 140 + 40 * i, 200, 30, bgColor, col, bgColor, aux, 1);
+			button[i].initButton(& tft, 120, 140 + 40 * i, 200, 30, bgColor, col, bgColor, aux, 1);
 			button[i].drawButton();
 		}
-		loops[0] = 1;                                                                                               // daca urmatorul loop apeleaza aceasta functie,
-	}                                                                                                                   // se specifica in vectorul loops sa se ignore instructiunile anterioare
+		loops[0] = 1;                                                                                             // daca urmatorul loop apeleaza aceasta functie,
+	}                                                                                                                 // se specifica in vectorul loops sa se ignore instructiunile anterioare
 
 	tft.setCursor(103, 15);
 	tft.setTextSize(2);
-	tft.setTextColor(col, bgColor);                                                                                    // se afiseaza procentajul bateriei
+	tft.setTextColor(col, bgColor);                                                                                   // se afiseaza procentajul bateriei
 	uint16_t vBat;
-	if (fona.getBattPercent(&vBat))
+	if (fona.getBattPercent(& vBat))
 	{
 		tft.print(vBat);
 		tft.print(" %");
@@ -129,11 +129,11 @@ void showPage0(TS_Point p)                                                      
 int showPage1(TS_Point p)                                                                                               // aplicatia "Phone" 
 {
 	int OK = 1;
-	if (loops[1] == 0)                                                                                             // daca aplicatia tocmai a fost accesata
-	{                                                                                                              // (daca procedura nu a fost apelata in loop-ul anterior),
-		tft.fillRect(15, 20, 210, 50, ILI9341_WHITE);                                                          // se deseneaza campurile pentru editare de text si se creeaza
-		tft.drawRect(15, 20, 210, 50, ILI9341_RED);                                                            // butoanele numerice si butoanele speciale care vor 
-		for (unsigned int row = 0; row < 5; row ++)                                                            // aparea pe ecran pana la parasirea aplicatiei.
+	if (loops[1] == 0)                                                                                              // daca aplicatia tocmai a fost accesata
+	{                                                                                                               // (daca procedura nu a fost apelata in loop-ul anterior),
+		tft.fillRect(15, 20, 210, 50, ILI9341_WHITE);                                                           // se deseneaza campurile pentru editare de text si se creeaza
+		tft.drawRect(15, 20, 210, 50, ILI9341_RED);                                                             // butoanele numerice si butoanele speciale care vor 
+		for (unsigned int row = 0; row < 5; row ++)                                                             // aparea pe ecran pana la parasirea aplicatiei.
 			for (unsigned int col = 0; col < 3; col ++)
 			{
 				int nr = row * 3 + col;
@@ -158,12 +158,12 @@ int showPage1(TS_Point p)                                                       
 			}
 
 
-			// spatierea dintre butoane pe axa OY este 5
-			// spatierea dintre butoane pe axa OX este 15
-			// inaltimea unui buton este 35
-			// lungimea unui buton este 60
-			// coordonata x a primului buton este 45
-			// coordonata y a primului buton este 95
+															// spatierea dintre butoane pe axa OY este 5
+															// spatierea dintre butoane pe axa OX este 15
+															// inaltimea unui buton este 35
+															// lungimea unui buton este 60
+															// coordonata x a primului buton este 45
+															// coordonata y a primului buton este 95
 
 
 			tft.fillRect(0, 283, 240, 300, ILI9341_RED);
@@ -173,9 +173,9 @@ int showPage1(TS_Point p)                                                       
 			tft.print(">>");
 
 			p.x = p.y = p.z = -1
-			while (ts.bufferSize())                                                                          // se elibereaza buffer-ul cu puncte in care a fost atins ecranul
-				ts.getPoint();                                                                           // pentru evitarea reapelarii procedurii pentru puncte duplicate,
-														         // care se pot crea, de exemplu, cand ecranul este apasat mai puternic.
+			while (ts.bufferSize())                                                                         // se elibereaza buffer-ul cu puncte in care a fost atins ecranul
+				ts.getPoint();                                                                          // pentru evitarea reapelarii procedurii pentru puncte duplicate,
+														        // care se pot crea, de exemplu, cand ecranul este apasat mai puternic.
 
 			loops[1] = 1;                                                                                   // se incheie o secventa a unor instructiuni care se executa
 		}                                                                                                       // doar la primul apel
@@ -231,7 +231,7 @@ int showPage1(TS_Point p)                                                       
 				tft.setCursor(30, 33);
 				tft.setTextColor(ILI9341_RED, ILI9341_WHITE);
 				tft.setTextSize(2);
-				tft.print(number);                                                                    // se afiseaza numarul din buffer dupa modificare.
+				tft.print(number);                                                                  // se afiseaza numarul din buffer dupa modificare.
 				delay(150);
 			}
 		}
@@ -305,7 +305,7 @@ int showPage1(TS_Point p)                                                       
 																									  // spatierea dintre butoane pe axa OX si pe axa OY este 5
 
 
-	int showPage2(TS_Point p)                                                                                 // aplicatia "Mesaje"
+	int showPage2(TS_Point p)                                                                                // aplicatia "Mesaje"
 	{
 		char * auxText;
 		short int * auxLengt
@@ -383,7 +383,7 @@ int showPage1(TS_Point p)                                                       
 		}
 
 		for (int b = 0; b < 15; b ++)
-			if (button[b].contains(p.x, p.y))                                                              // se determina care buton contine coordonatele punctului trimis ca parametru
+			if (button[b].contains(p.x, p.y))                                                               // se determina care buton contine coordonatele punctului trimis ca parametru
 				button[b].press(true);
 			else button[b].press(false);
 
@@ -408,8 +408,8 @@ int showPage1(TS_Point p)                                                       
 					if ((*auxLength) < (state ? 28 : 12))                                          // Se verifica daca mai pot fi introduse caractere in buffer-ul utilizat
 					{
 						char nr;
-						if (keyPosition < 30)                                                   // in functie de indicativul butonului apasat si indicativul paginii tastaturii,
-						{                                                                       // se introduce un caracter in buffer
+						if (keyPosition < 30)                                                  // in functie de indicativul butonului apasat si indicativul paginii tastaturii,
+						{                                                                      // se introduce un caracter in buffer
 							switch (b + keyPosition)
 							{
 								case 26: nr = '.'; break;
@@ -433,16 +433,16 @@ int showPage1(TS_Point p)                                                       
 					}
 
 
-					if (b == 10)                                                                    // se modifica optiunea "Caps Lock" si se redeseneaza 
-					{                                                                               // butoanele tastaturii in functie de informatia
-						upperCase = !upperCase;                                                 // retinuta in variabila upperCase
+					if (b == 10)                                                                   // se modifica optiunea "Caps Lock" si se redeseneaza 
+					{                                                                              // butoanele tastaturii in functie de informatia
+						upperCase = !upperCase;                                                // retinuta in variabila upperCase
 						printPage2Buttons();
-						changePage = 0;                                                         // se reprezinta aceleasi caractere
+						changePage = 0;                                                        // se reprezinta aceleasi caractere
 					}
 
 
-					if (b == 11)                                                                    // butoanele primesc informatia
-					{                                                                               // butoanelor de pe pagina anterioara a tastaturii
+					if (b == 11)                                                                   // butoanele primesc informatia
+					{                                                                              // butoanelor de pe pagina anterioara a tastaturii
 						if (keyPosition > 0)
 						{
 							keyPosition -= 10;
@@ -450,8 +450,8 @@ int showPage1(TS_Point p)                                                       
 						}
 					}
 
-					if (b == 12)                                                                     // butoanele primesc informatia
-					{                                                                                // butoanelor de pe pagina urmatoare a tastaturii
+					if (b == 12)                                                                   // butoanele primesc informatia
+					{                                                                              // butoanelor de pe pagina urmatoare a tastaturii
 						if (keyPosition < 30)
 						{
 							keyPosition += 10;
@@ -460,15 +460,15 @@ int showPage1(TS_Point p)                                                       
 					}
 
 					if (b == 13)
-						if ((*auxLength) < (state ? 28 : 12))                                     // "Space" adauga caracterul ' ' in buffer
+						if ((*auxLength) < (state ? 28 : 12))                                   // "Space" adauga caracterul ' ' in buffer
 						{
 							auxText[*auxLength] = ' ';
 							(*auxLength)++;
 							auxText[*auxLength] = '\0';
 						}
 
-					if (b == 14)                                                                      // "Clear" sterge ultimul caracter din buffer, ignorand
-					{                                                                                 // caracterele albe de la finalul liniei 1 de text.
+					if (b == 14)                                                                    // "Clear" sterge ultimul caracter din buffer, ignorand
+					{                                                                               // caracterele albe de la finalul liniei 1 de text.
 						auxText[*auxLength] = '\0';
 						if ((*auxLength) > 0)
 						{
@@ -482,11 +482,11 @@ int showPage1(TS_Point p)                                                       
 
 					if (state)
 						tft.setCursor(12, 95);
-					else tft.setCursor(12, 45);                                                      // se stabileste pozitia cursorului in functie de
-					tft.setTextColor(ILI9341_MAROON, ILI9341_WHITE);                                 // de buffer-ul asupra caruia se opereaza
+					else tft.setCursor(12, 45);                                                     // se stabileste pozitia cursorului in functie de
+					tft.setTextColor(ILI9341_MAROON, ILI9341_WHITE);                                // de buffer-ul asupra caruia se opereaza
 					tft.setTextSize(2);
-					if (strlen(auxText) == 18)                                                       // se ignora la afisare caracterele albe de la finalul randului 1,
-					{                                                                                // in cazul in care textul va fi scris pe doua randuri in editorul de text
+					if (strlen(auxText) == 18)                                                      // se ignora la afisare caracterele albe de la finalul randului 1,
+					{                                                                               // in cazul in care textul va fi scris pe doua randuri in editorul de text
 						strcat(auxText, "\n ");
 						(*auxLength) = (*auxLength) + 2;
 						auxText[*auxLength] = '\0';
@@ -829,7 +829,7 @@ int showPage1(TS_Point p)                                                       
 			tft.setCursor(20, 170);
 			tft.setTextColor(ILI9341_WHITE);
 			tft.print("Choose one of the colors below:");
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 5; i ++)
 			{
 				int clr;
 				switch (i)
