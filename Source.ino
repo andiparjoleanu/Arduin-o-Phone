@@ -299,7 +299,7 @@ void printPage2Buttons()                                                        
 	       button[row * 5 + col].drawButton();
 	  }
 
-		// coordonata x a primului buton este 27
+		                                                                                            // coordonata x a primului buton este 27
 }                                                                                                           // coordonata y a primului buton este 180
 																									  // latimea unui buton este 42
 																									  // inaltimea unui buton este 30
@@ -436,9 +436,9 @@ int showPage2(TS_Point p)                                                       
              }
 
 
-	    if (b == 10)                                                                                    // se modifica optiunea "Caps Lock" si se redeseneaza 
-	    {                                                                                               // butoanele tastaturii in functie de informatia
-		upperCase = !upperCase;                                                                     // retinuta in variabila upperCase
+	    if (b == 10)                                                                                     // se modifica optiunea "Caps Lock" si se redeseneaza 
+	    {                                                                                                // butoanele tastaturii in functie de informatia
+		upperCase = !upperCase;                                                                      // retinuta in variabila upperCase
 		printPage2Buttons();
 		changePage = 0;                                                                              // se reprezinta aceleasi caractere
 	    }
@@ -594,8 +594,8 @@ inline void showPage3(TS_Point p)                                               
 
 inline void showPage4(TS_Point p, int lineColor, int backgroundColor, int fontColor, char * buffer, int poz, char * buttonBuffer, short int buttonWidth, int prev, int colPrev)
 {
-														// Ferestre pentru informarea utilizatorului cu privire la efectul unei actiuni.
-     													        // Procedura se apeleaza cu mesaje si design specific contextului apelant
+													     // Ferestre pentru informarea utilizatorului cu privire la efectul unei actiuni.
+     													     // Procedura se apeleaza cu mesaje si design specific contextului apelant
     if (loops[4] == 0)
     {
 	tft.fillRect(45, 110, 150, 100, backgroundColor);
@@ -706,7 +706,7 @@ inline void showPage6(TS_Point p)                                               
 	    button[0].initButton(& tft, 185, 205, 60, 30, BROWN, ILI9341_MAROON, BROWN, ok, 1);
 	    button[0].drawButton();
 	    changePage = 0;
-	    while (ts.bufferSize())                                                                                    // Se elibereaza buffer-ul pentru ca functia sa nu se reapeleze cu un punct duplicat 
+	    while (ts.bufferSize())                                                                                        // Se elibereaza buffer-ul pentru ca functia sa nu se reapeleze cu un punct duplicat 
 		ts.getPoint();
 	}
 	else {
@@ -743,10 +743,10 @@ inline void showPage6(TS_Point p)                                               
 	  button[i].press(true);
       else button[i].press(false);
 
-      if (state)                                                                                             // daca expeditorul mesajului de pe pozitia SMSOnPage a fost citit,
-      {                                                                                                      // se deseneaza un buton intitulat "Delete";
+      if (state)                                                                                          // daca expeditorul mesajului de pe pozitia SMSOnPage a fost citit,
+      {                                                                                                   // se deseneaza un buton intitulat "Delete";
 	   if (button[0].contains(p.x, p.y))                                                              // la apasarea butonului, se sterge mesajul din memoria cartelei
-	        button[0].press(true);                                                                 // si se revine la prima pagina a aplicatiei
+	        button[0].press(true);                                                                    // si se revine la prima pagina a aplicatiei
 	   else button[0].press(false);
 
 	    if (button[0].justReleased())
@@ -798,7 +798,7 @@ inline void showPage6(TS_Point p)                                               
 		    }
 		 }
 
-		 if (i == 3)                                                                               // se cauta un mesaj primit inaintea mesajului afisat
+		 if (i == 3)                                                                                   // se cauta un mesaj primit inaintea mesajului afisat
 		 {
 		     if (SMSOnPage > 0)
 		     {
@@ -858,7 +858,7 @@ inline void settings(TS_Point p)                                                
        loops[7] = 1;
   }
 
-  if (p.x >= 20 && p.x <= 218 && p.y >= 100 && p.y <= 120)                                         // functia "Audio Volume" 
+  if (p.x >= 20 && p.x <= 218 && p.y >= 100 && p.y <= 120)                                      // functia "Audio Volume" 
   {
        int t = fona.getVolume();
        int setVol = (p.x - 20) / 2;                                                             // volumul este reprezentat pe o scara de 200 de unitati                              
@@ -873,11 +873,11 @@ inline void settings(TS_Point p)                                                
 	    ts.getPoint();
    }
 
-		                                                                                     // Schimbarea culorii de fundal pentru pagina principala
+		                                                                                    // Schimbarea culorii de fundal pentru pagina principala
    for (int i = 0; i < 5; i ++)
    {                                                                                                // Se verifica daca punctul trimis ca parametru procedurii are coordonatele
-        if (p.x >= 15 + (45 * i) && p.x <= 45 * (i + 1) && p.y >= 190 && p.y <= 210)             // incluse in aria unui patratel colorat. Daca da, se memoreaza in EEPROM
-	{                                                                                        // indicativul culorii patratelului.
+        if (p.x >= 15 + (45 * i) && p.x <= 45 * (i + 1) && p.y >= 190 && p.y <= 210)                // incluse in aria unui patratel colorat. Daca da, se memoreaza in EEPROM
+	{                                                                                           // indicativul culorii patratelului.
 	    tft.drawRect(12 + (45 * i), 187, 36, 36, ILI9341_GREEN);
 	    switch (i)
 	    {
@@ -901,8 +901,8 @@ inline void settings(TS_Point p)                                                
     if (button[0].justReleased())
 	 button[0].drawButton();
 
-    if (button[0].justPressed())                                                                 // In cazul in care este apasat butonul "Menu", se revine la
-    {                                                                                            // meniul principal
+    if (button[0].justPressed())                                                                   // In cazul in care este apasat butonul "Menu", se revine la
+    {                                                                                              // meniul principal
        button[0].drawButton(true);
        tft.fillScreen(ILI9341_BLACK);
        delay(50);
@@ -911,13 +911,13 @@ inline void settings(TS_Point p)                                                
     }
 }
 
-inline bool showPage10(TS_Point p)                                                                                  // Raspuns la apel
+inline bool showPage10(TS_Point p)                                                                 // Raspuns la apel
 {
     int OK = 1;
-    if (loops[8] == 0)                                                                                          // Daca procedura nu a fost apelata in loop-ul anterior, 
-    {                                                                                                           // se stabileste iesirea audio externa, se citeste
-	text[0] = '\0';                                                                                     // numarul de telefon apelant, se initializeaza butoanele
-	number[0] = '\0';                                                                                   // Ignore si Answer.
+    if (loops[8] == 0)                                                                             // Daca procedura nu a fost apelata in loop-ul anterior, 
+    {                                                                                              // se stabileste iesirea audio externa, se citeste
+	text[0] = '\0';                                                                            // numarul de telefon apelant, se initializeaza butoanele
+	number[0] = '\0';                                                                          // Ignore si Answer.
 	fona.setAudio(FONA_EXTAUDIO);
 	tft.fillScreen(ILI9341_BLACK);
 	tft.setCursor(40, 80);
@@ -953,7 +953,7 @@ inline bool showPage10(TS_Point p)                                              
 	    if (button[i].justPressed())
 	    {
 		button[i].drawButton(true);
-		if (i == 1)                                                                                            // daca utilizatorul apasa butonul Ignore,
+		if (i == 1)                                                                                      // daca utilizatorul apasa butonul Ignore,
 		{                                                                                                // se intrerupe apelul si se revine la meniul principal
 		     for (int i = 0; i < 8; i ++)
 			loops[i] = 0;
@@ -970,11 +970,11 @@ inline bool showPage10(TS_Point p)                                              
 		     fona.hangUp();
 		}
 		else 
-		{                                                                                                       // daca utilizatorul apasa butonul Answer,
-		     fona.setAudio(FONA_EXTAUDIO);                                                                        // se stabileste conexiunea intre dispozitivul
-		     fona.pickUp();                                                                                       // utilizatorului si dispozitivul expeditorului,
-		     tft.fillRect(0, 230, 240, 100, ILI9341_BLACK);                                                       // se afiseaza un mesaj sugestiv evenimentului si se
-		     tft.fillRect(40, 100, 200, 10, ILI9341_BLACK);                                                       // initializeaza un buton pentru incheierea apelului
+		{                                                                                                   // daca utilizatorul apasa butonul Answer,
+		     fona.setAudio(FONA_EXTAUDIO);                                                                  // se stabileste conexiunea intre dispozitivul
+		     fona.pickUp();                                                                                 // utilizatorului si dispozitivul expeditorului,
+		     tft.fillRect(0, 230, 240, 100, ILI9341_BLACK);                                                 // se afiseaza un mesaj sugestiv evenimentului si se
+		     tft.fillRect(40, 100, 200, 10, ILI9341_BLACK);                                                 // initializeaza un buton pentru incheierea apelului
 		     tft.setCursor(40, 100);
 		     tft.setTextSize(1);
 		     tft.setTextColor(ILI9341_WHITE, ILI9341_BLACK);
@@ -982,7 +982,7 @@ inline bool showPage10(TS_Point p)                                              
 		     char txt1[] = "END";
 		     button[3].initButton(&tft, 120, 250, 60, 40, ILI9341_WHITE, ILI9341_RED, ILI9341_WHITE, txt1, 1);
 		     button[3].drawButton();
-		     answer = true;                                                                                       // se retine faptul ca s-a raspuns la apel
+		     answer = true;                                                                                  // se retine faptul ca s-a raspuns la apel
 		     return 0;
 		}
 	    }
@@ -999,18 +999,18 @@ inline bool showPage10(TS_Point p)                                              
 
 	if (button[3].justPressed())                                                                                   // daca s-a raspuns la apel si s-a apasat                                                                   
 	{                                                                                                              // butonul "END", conexiunea este inchiata
-	    button[3].drawButton(true);                                                                            // si se revine la pagina principala
+	    button[3].drawButton(true);                                                                                // si se revine la pagina principala
 	    OK = 0;
 	    fona.hangUp();
 	}
      }
 
      long localStatus = fona.getCallStatus();
-     if ((localStatus != 4 && localStatus != 3 && localStatus != 1) || OK == 0)                                             // daca este primit un apel de intrare, 
-     {                                                                                                                      // daca apelul primit este in desfasurare sau 
+     if ((localStatus != 4 && localStatus != 3 && localStatus != 1) || OK == 0)                                         // daca este primit un apel de intrare, 
+     {                                                                                                                  // daca apelul primit este in desfasurare sau 
 	 pgNumber = 0;                                                                                                  // starea apelului nu poate fi determinata, adica
 	 for (int i = 0; i <= 8; i ++)                                                                                  // fona.getCallStatus() returneaza 3, 4, respectiv 1,
-	      loops[i] = 0;                                                                                          // atunci se incheie apelul si se revine la meniul principal si
+	      loops[i] = 0;                                                                                             // atunci se incheie apelul si se revine la meniul principal si
 	 changePage = 1;                                                                                                // se reinitializeaza parametrii paginii curente
 	 keyPosition = 0;
 	 state = 0;
@@ -1055,7 +1055,7 @@ void loop()
      TS_Point p;
      if (ts.bufferSize())
      {
-	  p = ts.getPoint();                                                                                 // Se obtine un punct din buffer-ul de puncte apasate pe ecran
+	  p = ts.getPoint();                                                                                // Se obtine un punct din buffer-ul de puncte apasate pe ecran
      }
      else
      {
@@ -1070,18 +1070,18 @@ void loop()
 	 p.y = map(p.y, TS_MINY, TS_MAXY, 0, 320);                                                           // functie de coordonatele ecranului
      }
 
-     char str1[10] = { '\0' }, str2[10] = { '\0' };                                                              // siruri de caractere auxiliare, folosite pentru memorarea temporara a unor informatii
+     char str1[10] = { '\0' }, str2[10] = { '\0' };                                                          // siruri de caractere auxiliare, folosite pentru memorarea temporara a unor informatii
 																												// folosite in apelul unor proceduri
      if (pgNumber != 10)
 	if (fona.read() != -1)
 	{
-	     int k = fona.getCallStatus();                                                               // in orice aplicatie s-ar afla utilizatorul, daca semnalul pe 
-	     if (k == 3)                                                                                 // interfata seriala se modifica, se determina daca telefonul
-		pgNumber = 10;                                                                      // primeste un apel de intrare si se afiseaza pagina corespunzatoare
+	     int k = fona.getCallStatus();                                                                  // in orice aplicatie s-ar afla utilizatorul, daca semnalul pe 
+	     if (k == 3)                                                                                    // interfata seriala se modifica, se determina daca telefonul
+		pgNumber = 10;                                                                              // primeste un apel de intrare si se afiseaza pagina corespunzatoare
 	}
 
-     switch (pgNumber)                                                                                          // se apeleaza functia corespunzatoare aplicatiei curente (identificata prin valoarea 
-     {                                                                                                          // memorata in pgNumber)
+     switch (pgNumber)                                                                                      // se apeleaza functia corespunzatoare aplicatiei curente (identificata prin valoarea 
+     {                                                                                                      // memorata in pgNumber)
         case 0: showPage0(p); break;
 	case 1: showPage1(p); break;
 	case 2: showPage2(p); break;
