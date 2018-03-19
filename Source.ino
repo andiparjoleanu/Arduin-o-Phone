@@ -19,7 +19,8 @@
 Adafruit_STMPE610 ts = Adafruit_STMPE610(STMPE_CS);                                                  // crearea unui obiect pentru utilizarea ecranului prin atingere
 
 #define FONA_RX 2
-#define FONA_TX 3#define FONA_RS 4
+#define FONA_TX 3
+#define FONA_RS 4
 
 extern const unsigned char home[];
 
@@ -60,34 +61,34 @@ void showPage0(TS_Point p)                                                      
 	int col;
 	switch (bgColor)                                                                                                   // se coloreaza butoanele de pe pagina in functie de                                           
 	{                                                                                                                  // culoarea de fundal
-		case ILI9341_WHITE: col = ILI9341_BLACK; break;
-		case ILI9341_DARKGREY: col = ILI9341_NAVY; break;
-		case ILI9341_MAGENTA: col = ILI9341_PURPLE; break;
-		case ILI9341_BLUE: col = ILI9341_WHITE; break;
-		case ILI9341_BLACK: col = ILI9341_GREENYELLOW; break;
+	   case ILI9341_WHITE: col = ILI9341_BLACK; break;
+	   case ILI9341_DARKGREY: col = ILI9341_NAVY; break;
+           case ILI9341_MAGENTA: col = ILI9341_PURPLE; break;
+           case ILI9341_BLUE: col = ILI9341_WHITE; break;
+	   case ILI9341_BLACK: col = ILI9341_GREENYELLOW; break;
 	}
 
 	if (loops[0] == 0)                                                                                                 // daca pana la loop-ul curent aceasta functie nu a mai fost apelata,
 	{
-		tft.fillScreen(bgColor);
-		tft.setTextColor(col);
-		tft.setCursor(53, 80);
-		tft.print("What can I do for you?");
-		char aux[15] = { '\0' };
-		for (int i = 0; i < 4; i ++)
+	    tft.fillScreen(bgColor);
+       	    tft.setTextColor(col);
+            tft.setCursor(53, 80);
+	    tft.print("What can I do for you?");
+	    char aux[15] = { '\0' };
+            for (int i = 0; i < 4; i ++)
+            {
+		switch (i)
 		{
-			switch (i)
-			{
-				case 0: aux[0] = '\0'; strcat(aux, "Phone"); break;                                         // se coloreaza fundalul, se creeaza butoanele
-				case 1: aux[0] = '\0'; strcat(aux, "Message"); break;
-				case 2: aux[0] = '\0'; strcat(aux, "Log"); break;
-				case 3: aux[0] = '\0'; strcat(aux, "Settings"); break;
-			}
-
-			button[i].initButton(& tft, 120, 140 + 40 * i, 200, 30, bgColor, col, bgColor, aux, 1);
-			button[i].drawButton();
+		     case 0: aux[0] = '\0'; strcat(aux, "Phone"); break;                                                 // se coloreaza fundalul, se creeaza butoanele
+		     case 1: aux[0] = '\0'; strcat(aux, "Message"); break;
+	             case 2: aux[0] = '\0'; strcat(aux, "Log"); break;
+		     case 3: aux[0] = '\0'; strcat(aux, "Settings"); break;
 		}
-		loops[0] = 1;                                                                                             // daca urmatorul loop apeleaza aceasta functie,
+
+		button[i].initButton(& tft, 120, 140 + 40 * i, 200, 30, bgColor, col, bgColor, aux, 1);
+		button[i].drawButton();
+	     }
+	     loops[0] = 1;                                                                                                // daca urmatorul loop apeleaza aceasta functie,
 	}                                                                                                                 // se specifica in vectorul loops sa se ignore instructiunile anterioare
 
 	tft.setCursor(103, 15);
@@ -96,33 +97,33 @@ void showPage0(TS_Point p)                                                      
 	uint16_t vBat;
 	if (fona.getBattPercent(& vBat))
 	{
-		tft.print(vBat);
-		tft.print(" %");
+	    tft.print(vBat);
+	    tft.print(" %");
 	}
 
 	for (int i = 0; i < 4; i ++)                                                                                      // daca un buton contine coordonatele punctului trimis
-		if (button[i].contains(p.x, p.y))                                                                         // ca parametru, se marcheaza ca fiind apasat
-			button[i].press(true);
-		else button[i].press(false);
+	    if (button[i].contains(p.x, p.y))                                                                             // ca parametru, se marcheaza ca fiind apasat
+		button[i].press(true);
+     	     else button[i].press(false);
 
 	for (int i = 0; i < 4; i ++)
 	{
-		if (button[i].justReleased())                                                                            // daca un buton nu a fost apasat, se deseneaza
-			button[i].drawButton();                                                                          // dupa parametrii cu care a fost initializat
+	    if (button[i].justReleased())                                                                                // daca un buton nu a fost apasat, se deseneaza
+		button[i].drawButton();                                                                                  // dupa parametrii cu care a fost initializat
 
-		if (button[i].justPressed())                                                                             // daca butonul a fost apasat, se interschimba culorile 
-		{                                                                                                        // cu care a fost initializat 
-			button[i].drawButton(true);
-			switch (i)
-			{
-				case 0: pgNumber = 1; tft.fillScreen(ILI9341_BLACK); break;
-				case 1: pgNumber = 2; tft.fillScreen(ILI9341_ORANGE); break;                             // fiecare buton contine un link catre o aplicatie
-				case 2: pgNumber = 6; break;                                                             // identificata printr-un cod memorat in variabila pgNumber
-				case 3: pgNumber = 9; tft.fillScreen(ILI9341_BLACK); break;
-			}
+	    if (button[i].justPressed())                                                                                 // daca butonul a fost apasat, se interschimba culorile 
+	    {                                                                                                            // cu care a fost initializat 
+		button[i].drawButton(true);
+		switch (i)
+		{
+	           case 0: pgNumber = 1; tft.fillScreen(ILI9341_BLACK); break;
+	           case 1: pgNumber = 2; tft.fillScreen(ILI9341_ORANGE); break;                             // fiecare buton contine un link catre o aplicatie
+	           case 2: pgNumber = 6; break;                                                             // identificata printr-un cod memorat in variabila pgNumber
+		   case 3: pgNumber = 9; tft.fillScreen(ILI9341_BLACK); break;
+	     	}
 	     	loops[0] = 0;
-		}
-	}
+             }
+        }
 }
 
 
@@ -131,31 +132,31 @@ int showPage1(TS_Point p)                                                       
 	int OK = 1;
 	if (loops[1] == 0)                                                                                              // daca aplicatia tocmai a fost accesata
 	{                                                                                                               // (daca procedura nu a fost apelata in loop-ul anterior),
-		tft.fillRect(15, 20, 210, 50, ILI9341_WHITE);                                                           // se deseneaza campurile pentru editare de text si se creeaza
-		tft.drawRect(15, 20, 210, 50, ILI9341_RED);                                                             // butoanele numerice si butoanele speciale care vor 
-		for (unsigned int row = 0; row < 5; row ++)                                                             // aparea pe ecran pana la parasirea aplicatiei.
-			for (unsigned int col = 0; col < 3; col ++)
-			{
-				int nr = row * 3 + col;
-				char specialLabel[8] = { '\0' }, label[2] = { '\0' };
-				if (nr < 9)
-				{
-					label[0] = nr + 49;
-					label[1] = '\0';
-				}
-				else switch (nr)
-					{
-						case 9: label[0] = 48; label[1] = '\0'; break;
-						case 10: label[0] = '*'; label[1] = '\0'; break;
-						case 11: label[0] = '#'; label[1] = '\0'; break;
-						case 12: strcat(specialLabel, "Clear"); specialLabel[5] = '\0'; break;
-						case 13: strcat(specialLabel, "Call"); specialLabel[4] = '\0'; break;
-						case 14: strcat(specialLabel, "Message"); specialLabel[7] = '\0'; break;
-					}
+	    tft.fillRect(15, 20, 210, 50, ILI9341_WHITE);                                                           // se deseneaza campurile pentru editare de text si se creeaza
+            tft.drawRect(15, 20, 210, 50, ILI9341_RED);                                                             // butoanele numerice si butoanele speciale care vor 
+	    for (unsigned int row = 0; row < 5; row ++)                                                             // aparea pe ecran pana la parasirea aplicatiei.
+		for (unsigned int col = 0; col < 3; col ++)
+		{
+	   	    int nr = row * 3 + col;
+		    char specialLabel[8] = { '\0' }, label[2] = { '\0' };
+	     	    if (nr < 9)
+	    	    {
+			label[0] = nr + 49;
+			label[1] = '\0';
+	   	    }
+		    else switch (nr)
+		         {
+   			      case 9: label[0] = 48; label[1] = '\0'; break;
+			      case 10: label[0] = '*'; label[1] = '\0'; break;
+			      case 11: label[0] = '#'; label[1] = '\0'; break;
+			      case 12: strcat(specialLabel, "Clear"); specialLabel[5] = '\0'; break;
+			      case 13: strcat(specialLabel, "Call"); specialLabel[4] = '\0'; break;
+			      case 14: strcat(specialLabel, "Message"); specialLabel[7] = '\0'; break;
+			 }
 
-				button[nr].initButton(&tft, 45 + col * (60 + 15), 95 + row * (35 + 5), 60, 35, ILI9341_WHITE, (nr > 11) ? BROWN : ILI9341_RED, ILI9341_WHITE, (nr < 12) ? label : specialLabel, 1);
-				button[nr].drawButton();
-			}
+			button[nr].initButton(&tft, 45 + col * (60 + 15), 95 + row * (35 + 5), 60, 35, ILI9341_WHITE, (nr > 11) ? BROWN : ILI9341_RED, ILI9341_WHITE, (nr < 12) ? label : specialLabel, 1);
+			button[nr].drawButton();
+		}
 
 
 															// spatierea dintre butoane pe axa OY este 5
@@ -166,54 +167,54 @@ int showPage1(TS_Point p)                                                       
 															// coordonata y a primului buton este 95
 
 
-			tft.fillRect(0, 283, 240, 300, ILI9341_RED);
-			tft.setCursor(110, 295);
-			tft.setTextSize(2);
-			tft.setTextColor(ILI9341_WHITE);
-			tft.print(">>");
+	     tft.fillRect(0, 283, 240, 300, ILI9341_RED);
+	     tft.setCursor(110, 295);
+	     tft.setTextSize(2);
+	     tft.setTextColor(ILI9341_WHITE);
+	     tft.print(">>");
 
-			p.x = p.y = p.z = -1
-			while (ts.bufferSize())                                                                         // se elibereaza buffer-ul cu puncte in care a fost atins ecranul
-				ts.getPoint();                                                                          // pentru evitarea reapelarii procedurii pentru puncte duplicate,
+	     p.x = p.y = p.z = -1
+	     while (ts.bufferSize())                                                                         // se elibereaza buffer-ul cu puncte in care a fost atins ecranul
+	          ts.getPoint();                                                                          // pentru evitarea reapelarii procedurii pentru puncte duplicate,
 														        // care se pot crea, de exemplu, cand ecranul este apasat mai puternic.
 
-			loops[1] = 1;                                                                                   // se incheie o secventa a unor instructiuni care se executa
-		}                                                                                                       // doar la primul apel
+	     loops[1] = 1;                                                                                   // se incheie o secventa a unor instructiuni care se executa
+	}                                                                                                       // doar la primul apel
 
-		for (int b = 0; b < 15; b ++)
-			if (button[b].contains(p.x, p.y))
-				button[b].press(true);                                                                  // se cauta butonul care contine coordonatele punctului p de pe ecran
-			else button[b].press(false);
+	for (int b = 0; b < 15; b ++)
+    	   if (button[b].contains(p.x, p.y))
+ 		button[b].press(true);                                                                  // se cauta butonul care contine coordonatele punctului p de pe ecran
+	    else button[b].press(false);
 
-		for (int b = 0; b < 15; b ++)
-		{
-			if (button[b].justReleased())
-				button[b].drawButton();
+	for (int b = 0; b < 15; b ++)
+	{
+	    if (button[b].justReleased())
+		button[b].drawButton();
 
-			if (button[b].justPressed())
-			{
-				button[b].drawButton(true);
-				if (b < 12)
-					if (nrLength < 12)
-					{
-						if (b < 9)
-							number[nrLength] = 49 + b;                                     // daca butonul indica un caracter,
-						else switch (b)                                                        // se salveaza, in buffer-ul  numarului de 
-						{                                                                      // telefon, caracterul respectiv.
-				     		case 9: number[nrLength] = 48; break;
-							case 10: number[nrLength] = '*'; break;
-							case 11: number[nrLength] = '#'; break;
-						}
+	     if (button[b].justPressed())
+	     {
+		 button[b].drawButton(true);
+		 if (b < 12)
+    	            if (nrLength < 12)
+		    {
+			if (b < 9)
+			   number[nrLength] = 49 + b;                                     // daca butonul indica un caracter,
+		         else switch (b)                                                        // se salveaza, in buffer-ul  numarului de 
+			      {                                                                      // telefon, caracterul respectiv.
+				   case 9: number[nrLength] = 48; break;
+				   case 10: number[nrLength] = '*'; break;
+				   case 11: number[nrLength] = '#'; break;
+			      }
 
-						nrLength++;
-						number[nrLength] = '\0';
+			nrLength++;
+			number[nrLength] = '\0';
 
-					}
+		    }
 
 
-				if (b == 12)                                                                           // "Clear" suprascrie, pe penultima pozitie
-				{                                                                                      // din sirul number, caracterul ' ' pentru
-					number[nrLength] = '\0';                                                       // acoperirea pe ecran a caracterului sters din buffer.
+		    if (b == 12)                                                                           // "Clear" suprascrie, pe penultima pozitie
+		    {                                                                                      // din sirul number, caracterul ' ' pentru
+			number[nrLength] = '\0';                                                       // acoperirea pe ecran a caracterului sters din buffer.
 					if (nrLength > 0)
 					{
 						nrLength--;
